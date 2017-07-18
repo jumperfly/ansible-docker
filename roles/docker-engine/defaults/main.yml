@@ -1,0 +1,5 @@
+---
+dockerPackage: docker-ce
+configureYumRepo: yes
+yumUrl: https://download.docker.com/linux/centos/7/x86_64/stable
+yumGpg: https://download.docker.com/linux/centos/gpg

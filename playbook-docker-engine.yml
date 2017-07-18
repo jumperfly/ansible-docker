@@ -1,0 +1,6 @@
+---
+- hosts: docker-hosts
+  gather_facts: no
+  become: yes
+  roles:
+  - docker-engine

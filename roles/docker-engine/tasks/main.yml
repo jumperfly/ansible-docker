@@ -1,0 +1,20 @@
+---
+- name: Ensure ip_forward option is set
+  sysctl:
+    sysctl_file: /etc/sysctl.d/50-ip_forward.conf
+    name: net.ipv4.ip_forward
+    value: 1
+- name: Configure docker yum repository
+  yum_repository:
+    name: docker
+    description: Docker YUM repo
+    baseurl: "{{ yumUrl }}"
+    gpgkey: "{{ yumGpg }}"
+    gpgcheck: yes
+  when: configureYumRepo
+- name: Ensure docker is installed and up to date
+  yum: name={{ dockerPackage }} state=latest
+  notify:
+  - restart docker
+- name: Ensure docker service is enabled
+  service: name=docker enabled=yes

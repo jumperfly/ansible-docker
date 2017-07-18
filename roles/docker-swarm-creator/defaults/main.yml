@@ -1,0 +1,3 @@
+---
+swarmMasterInterface: "eth1"
+swarmMasterAddress: "{{ hostvars[inventory_hostname]['ansible_host'] }}"

@@ -1,0 +1,3 @@
+- name: Create a new swarm if no active managers
+  command: docker swarm init --advertise-addr {{ swarmMasterInterface }}
+  when: activeSwarmManagerCount|int == 0

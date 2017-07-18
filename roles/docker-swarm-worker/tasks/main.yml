@@ -1,0 +1,7 @@
+- name: Read docker info
+  command: docker info
+  register: dockerInfoCmd
+  changed_when: false
+- name: Join the swarm as a worker if not already joined
+  command: docker swarm join --token {{ swarmWorkerToken }} {{ swarmMasterAddress }}
+  when: "'Swarm: inactive' in dockerInfoCmd.stdout"

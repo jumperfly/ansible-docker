@@ -1,0 +1,3 @@
+- name: Join the swarm as a manager if not already joined
+  command: docker swarm join --token {{ swarmManagerToken }} {{ swarmMasterAddress }}
+  when: not activeSwarmManager

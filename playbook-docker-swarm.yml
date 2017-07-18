@@ -1,0 +1,25 @@
+---
+# Query the managers to see if a swarm is active
+- hosts: docker-swarm-managers
+  gather_facts: no
+  become: yes
+  roles:
+    - docker-swarm-manager-facts
+# Create a new swarm if necessary
+- hosts: docker-swarm-managers[0]
+  gather_facts: no
+  become: yes
+  roles:
+    - docker-swarm-creator
+# Ensure all managers have joined the swarm
+- hosts: docker-swarm-managers
+  gather_facts: no
+  become: yes
+  roles:
+    - docker-swarm-manager
+# Ensure all workers have joined the swarm
+- hosts: docker-swarm-workers
+  gather_facts: no
+  become: yes
+  roles:
+    - docker-swarm-worker

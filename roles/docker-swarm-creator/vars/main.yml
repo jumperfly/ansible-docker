@@ -1,0 +1,2 @@
+---
+activeSwarmManagerCount: "{{ groups['activeSwarmManager_True'] | default ('') | length }}"

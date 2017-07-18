@@ -1,0 +1,3 @@
+---
+swarmMasterAddress: "{{ hostvars[groups['activeSwarmManager_True'][0]]['ansible_host'] }}"
+swarmManagerToken: "{{ hostvars[groups['activeSwarmManager_True'][0]]['swarmManagerToken'] }}"
